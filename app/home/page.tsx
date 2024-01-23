@@ -1,4 +1,3 @@
-import { JSX, SVGProps } from "react"
 import Header from "./components/Header"
 
 const Home = () => {
