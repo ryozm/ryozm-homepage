@@ -8,6 +8,7 @@
         "varsIgnorePattern": "^_"
       }
     ],
+    "react/no-unescaped-entities": "off",
     "react/display-name": 0
   }
 }
