@@ -282,8 +282,7 @@ const DynamicLogo: FC<Props> = ({ width = 400, height = 400 }) => {
   // 激活logo
   function clickLogo(
     prt_canvas: ParticleCanvas | undefined,
-    logoItem: LogoImg,
-    updateActive = true
+    logoItem: LogoImg
   ) {
     toggleIsRunning(false)
     setTimeout(() => {
@@ -291,7 +290,7 @@ const DynamicLogo: FC<Props> = ({ width = 400, height = 400 }) => {
     }, 0)
     if (!prt_canvas) return
     prt_canvas.changeImg(logoItem)
-    updateActive && setActiveLogo(logoItem)
+    setActiveLogo(logoItem)
   }
 
   useMount(() => {
@@ -317,7 +316,7 @@ const DynamicLogo: FC<Props> = ({ width = 400, height = 400 }) => {
         let idx = logoImgs.findIndex(item => item.name === activeLogo?.name)
         if (idx !== -1) {
           idx = idx === logoImgs.length - 1 ? 0 : idx + 1
-          clickLogo(particleCanvas.current, logoImgs[idx], true)
+          clickLogo(particleCanvas.current, logoImgs[idx])
         }
       }
     },
@@ -327,13 +326,14 @@ const DynamicLogo: FC<Props> = ({ width = 400, height = 400 }) => {
   return (
     <div className=" relative w-full h-full flex justify-center items-center">
       <canvas ref={canvasRef} width={width} height={height}></canvas>
-      <div className="absolute bottom-20 flex flex-row items-center justify-center">
+      <div className="absolute bottom-10 flex flex-row items-center justify-center">
         {logos.map((item, idx) => (
           <div
             key={item.label}
             className={cn(
-              activeLogo?.name === item.label ? 'bg-slate-400' : 'bg-none',
-              'w-16 h-16 md:w-20 md:h-20 m-1 md:m-2 cursor-pointer rounded-lg hover:bg-slate-400 p-1 md:p-2 flex justify-center items-center'
+              activeLogo?.name === item.label ? 'bg-slate-700 dark:bg-slate-800' : 'bg-none',
+              'w-16 h-16 md:w-20 md:h-20 m-1 md:m-2 cursor-pointer rounded-lg p-1 md:p-2 flex justify-center items-center',
+              'bg-opacity-50 dark:bg-opacity-50 hover:bg-slate-800 hover:bg-opacity-50 dark:hover:bg-slate-700 dark:hover:bg-opacity-50'
             )}
             onClick={() => clickLogo(particleCanvas.current, logoImgs[idx])}
           >
