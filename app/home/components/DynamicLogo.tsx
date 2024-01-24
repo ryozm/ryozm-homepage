@@ -327,21 +327,21 @@ const DynamicLogo: FC<Props> = ({ width = 400, height = 400 }) => {
   return (
     <div className=" relative w-full h-full flex justify-center items-center">
       <canvas ref={canvasRef} width={width} height={height}></canvas>
-      <div className="absolute bottom-10 flex flex-row items-center justify-center">
-        {logoImgs.map(item => (
+      <div className="absolute bottom-20 flex flex-row items-center justify-center">
+        {logos.map((item, idx) => (
           <div
-            key={item.name}
+            key={item.label}
             className={cn(
-              activeLogo?.name === item.name ? 'bg-slate-400' : 'bg-none',
-              'w-20 h-20 lg:w-40 lg:h-40 m-2 cursor-pointer rounded-lg hover:bg-slate-400 p-2 flex justify-center items-center'
+              activeLogo?.name === item.label ? 'bg-slate-400' : 'bg-none',
+              'w-16 h-16 md:w-20 md:h-20 m-1 md:m-2 cursor-pointer rounded-lg hover:bg-slate-400 p-1 md:p-2 flex justify-center items-center'
             )}
-            onClick={() => clickLogo(particleCanvas.current, item)}
+            onClick={() => clickLogo(particleCanvas.current, logoImgs[idx])}
           >
             <NextImage
               width={100}
               height={100}
-              src={item.src}
-              alt={item.name}
+              src={item.url}
+              alt={item.label}
             />
           </div>
         ))}
