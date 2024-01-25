@@ -2,8 +2,6 @@
 import { useRef } from 'react'
 import { useEvent, useMount } from 'react-use'
 
-const _colors = ['#e5c755']
-
 // Inspired by https://codepen.io/ksenia-k/pen/rNoBgbV
 const Cursor = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
@@ -20,15 +18,15 @@ const Cursor = () => {
   const params = useRef<{
     pointsNumber: number
     widthFactor: number
-    mouseThreshold: number
     spring: number
     friction: number
+    color: string
   }>({
-    pointsNumber: 40,
-    widthFactor: 0.3,
-    mouseThreshold: 0.6,
+    pointsNumber: 10,
+    widthFactor: 1.5,
     spring: 0.3,
-    friction: 0.5
+    friction: 0.3,
+    color: 'rgba(224, 200, 104, 0.5)'
   })
 
   const trail = useRef<{ x: number; y: number; dx: number; dy: number }[]>([])
@@ -90,7 +88,7 @@ const Cursor = () => {
         xc,
         yc
       )
-      ctx.current.strokeStyle = _colors[(i / 5) % _colors.length]
+      ctx.current.strokeStyle = params.current.color
       ctx.current.lineWidth =
         params.current.widthFactor * (params.current.pointsNumber - i)
       ctx.current.stroke()
