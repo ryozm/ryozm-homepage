@@ -1,10 +1,11 @@
 'use client'
-import { useState, SVGProps } from 'react'
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import {
   Book,
   Briefcase,
   ChevronsDownUp,
+  Code,
   Mail,
   Menu,
   Moon,
@@ -28,16 +29,13 @@ const Header = () => {
 
   const [menuOpen, setMenuOpen] = useState(false)
   return (
-    <header className="fixed z-20 shadow-lg top-4 left-4 right-4 px-4 lg:px-6 h-16 bg-gray-200 dark:bg-gray-700 text-gray-800 justify-between flex flex-row items-center rounded-[40px]">
+    <header className="fixed backdrop-blur-md bg-opacity-50 dark:bg-opacity-50 z-20 shadow-lg top-4 left-4 right-4 px-4 lg:px-6 h-16 bg-gray-200 dark:bg-gray-700 text-gray-800 justify-between flex flex-row items-center rounded-[40px]">
       <div
         onMouseEnter={() => setLogoHover(true)}
         onMouseLeave={() => setLogoHover(false)}
         className="transition-all group flex justify-center items-center cursor-pointer font-bold"
       >
-        <CodeIcon
-          className="transition-all w-6 h-6 mr-2 text-primary"
-          strokeWidth={logoHover ? 4 : 2}
-        />
+        <Code className='transition-all w-6 h-6 mr-2 text-primary' strokeWidth={logoHover ? 4 : 2} />
         <span className="transition-all font-bold text-primary group-hover:text-cyan-500 group-hover:border-b dark:border-gray-400">
           Ryozm
         </span>
@@ -113,23 +111,3 @@ const Header = () => {
 }
 
 export default Header
-
-function CodeIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-      <polyline points="16 18 22 12 16 6" />
-      <polyline points="8 6 2 12 8 18" />
-    </svg>
-  )
-}
