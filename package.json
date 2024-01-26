@@ -11,8 +11,12 @@
   "author": "Ryozm",
   "license": "MIT",
   "dependencies": {
+    "@mdx-js/loader": "^3.0.0",
+    "@mdx-js/react": "^3.0.0",
+    "@next/mdx": "^14.1.0",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-slot": "^1.0.2",
+    "@types/mdx": "^2.0.10",
     "@vercel/speed-insights": "^1.0.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
