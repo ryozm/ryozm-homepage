@@ -3,8 +3,11 @@ import { Inter as FontSans } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils'
 import { ThemeProvider } from '@/components/theme-provider'
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import Header from '@/components/layout/Header'
+import { Suspense, lazy } from 'react'
+
+const Cursor = lazy(() => import('@/components/Cursor'))
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -36,7 +39,12 @@ export default function RootLayout({
           // disableTransitionOnChange
         >
           <Header />
-          {children}
+          <div className="bg-[#f9f6f4] dark:bg-[#1c2025] min-h-screen">
+            {children}
+          </div>
+          <Suspense>
+            <Cursor />
+          </Suspense>
         </ThemeProvider>
         <SpeedInsights />
       </body>

@@ -26,7 +26,7 @@ const Cursor = () => {
     widthFactor: 1.5,
     spring: 0.3,
     friction: 0.3,
-    color: 'rgba(224, 200, 104, 0.5)'
+    color: 'rgb(240, 240, 104)'
   })
 
   const trail = useRef<{ x: number; y: number; dx: number; dy: number }[]>([])
