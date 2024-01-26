@@ -1,5 +1,4 @@
 import { Book, Briefcase, Mail, User } from 'lucide-react'
-import Header from './components/Header'
 import { Suspense, lazy } from 'react'
 
 const DynamicLogo = lazy(() => import('./components/DynamicLogo'))
@@ -11,7 +10,6 @@ const Home = () => {
       <Suspense>
         <Cursor />
       </Suspense>
-      <Header />
       <div className="snap-always border-t-2 relative snap-center min-h-screen pt-[100px] bg-slate-400 dark:bg-slate-900">
         <div className="text-center">
           <h3 className="text-3xl italic">Hello,I'm </h3>
