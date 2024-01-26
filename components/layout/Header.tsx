@@ -6,6 +6,7 @@ import {
   Briefcase,
   ChevronsDownUp,
   Code,
+  Home,
   Mail,
   Menu,
   Moon,
@@ -21,13 +22,17 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import { cn } from '@/lib/utils'
+import { useRouter } from 'next/navigation'
 
 const Header = () => {
   const { theme, setTheme } = useTheme()
 
+  const router = useRouter()
+
   const [logoHover, setLogoHover] = useState(false)
 
   const [menuOpen, setMenuOpen] = useState(false)
+
   return (
     <header className="fixed backdrop-blur-md bg-opacity-50 dark:bg-opacity-50 z-20 shadow-lg top-4 left-4 right-4 px-4 lg:px-6 h-16 bg-gray-200 dark:bg-gray-700 text-gray-800 justify-between flex flex-row items-center rounded-[40px]">
       <div
@@ -35,25 +40,52 @@ const Header = () => {
         onMouseLeave={() => setLogoHover(false)}
         className="transition-all group flex justify-center items-center cursor-pointer font-bold"
       >
-        <Code className='transition-all w-6 h-6 mr-2 text-primary' strokeWidth={logoHover ? 4 : 2} />
+        <Code
+          className="transition-all w-6 h-6 mr-2 text-primary"
+          strokeWidth={logoHover ? 4 : 2}
+        />
         <span className="transition-all font-bold text-primary group-hover:text-cyan-500 group-hover:border-b dark:border-gray-400">
           Ryozm
         </span>
       </div>
       <div className="flex flex-row items-center gap-2 font-bold">
-        <Button className="hidden md:flex" variant="link">
+        <Button
+          className="hidden md:flex hover:ring ring-primary"
+          variant="link"
+          onClick={() => router.push('/home')}
+        >
+          <Home className="mr-2 h-4 w-4" />
+          Home
+        </Button>
+        <Button
+          className="hidden md:flex hover:ring ring-primary"
+          variant="link"
+          onClick={() => router.push('/about')}
+        >
           <User className="mr-2 h-4 w-4" />
           About
         </Button>
-        <Button className="hidden md:flex" variant="link">
+        <Button
+          className="hidden md:flex hover:ring ring-primary"
+          variant="link"
+          onClick={() => router.push('/works')}
+        >
           <Briefcase className="mr-2 h-4 w-4" />
           Works
         </Button>
-        <Button className="hidden md:flex" variant="link">
+        <Button
+          className="hidden md:flex hover:ring ring-primary"
+          variant="link"
+          onClick={() => router.push('/posts')}
+        >
           <Book className="mr-2 h-4 w-4" />
           Posts
         </Button>
-        <Button className="hidden md:flex" variant="link">
+        <Button
+          className="hidden md:flex hover:ring ring-primary"
+          variant="link"
+          onClick={() => router.push('/contact')}
+        >
           <Mail className="mr-2 h-4 w-4" />
           Contact
         </Button>
@@ -76,19 +108,23 @@ const Header = () => {
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56">
             <DropdownMenuGroup>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => router.push('/home')}>
+                <Home className="mr-2 h-4 w-4" />
+                <span>Home</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => router.push('/about')}>
                 <User className="mr-2 h-4 w-4" />
                 <span>About</span>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => router.push('/works')}>
                 <Briefcase className="mr-2 h-4 w-4" />
                 <span>Works</span>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => router.push('/posts')}>
                 <Book className="mr-2 h-4 w-4" />
                 <span>Posts</span>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => router.push('/contact')}>
                 <Mail className="mr-2 h-4 w-4" />
                 <span>Contact</span>
               </DropdownMenuItem>
