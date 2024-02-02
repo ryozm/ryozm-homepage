@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, MouseEvent } from 'react'
 import { Button } from '@/components/ui/button'
 import {
   Book,
@@ -32,6 +32,48 @@ const Header = () => {
   const [logoHover, setLogoHover] = useState(false)
 
   const [menuOpen, setMenuOpen] = useState(false)
+
+  function toggleTheme(event: MouseEvent) {
+    const isDark = theme === 'light'
+
+    const isAppearanceTransition =
+      !!document.startViewTransition &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (!isAppearanceTransition) {
+      setTheme(isDark ? 'dark' : 'light')
+      return
+    }
+
+    const x = event.clientX
+    const y = event.clientY
+    const endRadius = Math.hypot(
+      Math.max(x, innerWidth - x),
+      Math.max(y, innerHeight - y)
+    )
+
+    const transition = document.startViewTransition(async () => {
+      setTheme(isDark ? 'dark' : 'light')
+    })
+    transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`
+      ]
+      document.documentElement.animate(
+        {
+          clipPath: isDark ? [...clipPath].reverse() : clipPath
+        },
+        {
+          duration: 400,
+          easing: 'ease-out',
+          pseudoElement: isDark
+            ? '::view-transition-old(root)'
+            : '::view-transition-new(root)'
+        }
+      )
+    })
+  }
 
   return (
     <header className="fixed backdrop-blur-md bg-opacity-50 dark:bg-opacity-50 z-20 shadow-lg top-4 left-4 right-4 px-4 lg:px-6 h-16 bg-gray-200 dark:bg-gray-700 text-gray-800 justify-between flex flex-row items-center rounded-[40px]">
@@ -133,7 +175,7 @@ const Header = () => {
         </DropdownMenu>
         <Button
           className="rounded-full"
-          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+          onClick={toggleTheme}
           variant="outline"
           size="icon"
         >
