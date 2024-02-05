@@ -128,16 +128,16 @@ const Cursor = () => {
 
   useEvent('mousemove', e => {
     mouseMoved.current = true
-    updateMousePosition(e.pageX, e.pageY)
+    updateMousePosition(e.clientX, e.clientY)
   })
 
   useEvent('touchmove', e => {
     mouseMoved.current = true
-    updateMousePosition(e.targetTouches[0].pageX, e.targetTouches[0].pageY)
+    updateMousePosition(e.targetTouches[0].clientX, e.targetTouches[0].clientY)
   })
 
   useEvent('click', e => {
-    updateMousePosition(e.pageX, e.pageY)
+    updateMousePosition(e.clientX, e.clientY)
   })
 
   useEvent('resize', setupCanvas)
