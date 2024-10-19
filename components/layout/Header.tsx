@@ -2,8 +2,8 @@
 import { useState, MouseEvent } from 'react'
 import { Button } from '@/components/ui/button'
 import {
-  Book,
-  Briefcase,
+  // Book,
+  // Briefcase,
   ChevronsDownUp,
   Code,
   Home,
@@ -107,7 +107,7 @@ const Header = () => {
           <User className="mr-2 h-4 w-4" />
           About
         </Button>
-        <Button
+        {/* <Button
           className="hidden md:flex hover:ring ring-primary"
           variant="link"
           onClick={() => router.push('/works')}
@@ -122,7 +122,7 @@ const Header = () => {
         >
           <Book className="mr-2 h-4 w-4" />
           Posts
-        </Button>
+        </Button> */}
         <Button
           className="hidden md:flex hover:ring ring-primary"
           variant="link"
@@ -158,14 +158,14 @@ const Header = () => {
                 <User className="mr-2 h-4 w-4" />
                 <span>About</span>
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => router.push('/works')}>
+              {/* <DropdownMenuItem onClick={() => router.push('/works')}>
                 <Briefcase className="mr-2 h-4 w-4" />
                 <span>Works</span>
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => router.push('/posts')}>
                 <Book className="mr-2 h-4 w-4" />
                 <span>Posts</span>
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
               <DropdownMenuItem onClick={() => router.push('/contact')}>
                 <Mail className="mr-2 h-4 w-4" />
                 <span>Contact</span>
