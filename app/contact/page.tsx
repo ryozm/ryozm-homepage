@@ -60,8 +60,7 @@ const ContactPage = () => {
         </div>
 
         <p className="mt-6 sm:mt-8 text-xs sm:text-sm text-gray-500">
-          I'll get back to you faster than you can say "React hooks"! Looking
-          forward to our potential collaboration.
+          Looking forward to our potential collaboration.
         </p>
       </div>
     </div>
