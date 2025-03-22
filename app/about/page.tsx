@@ -1,6 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { CodeIcon, GithubIcon, MailIcon } from 'lucide-react'
-import Image from 'next/image'
 
 const AboutPage = () => {
   return (
@@ -84,19 +83,6 @@ const AboutPage = () => {
           >
             <MailIcon className="h-6 w-6" />
             <span>ryozming@gmail.com</span>
-          </a>
-          <a
-            className="flex items-center gap-2 hover:ring ring-primary rounded-md p-2"
-            href="https://twitter.com/ryozm__"
-            target="_blank"
-          >
-            <Image
-              width={24}
-              height={24}
-              alt="X"
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAA3ElEQVR4Ac2SGQDFMBBE1ylOcYpTner0neK0TnGpU53iFKc6xWl+p+f25D7InZ295Cv0mGjFUOzWDVVVa/WykaBiaBBFfsiyory3JASRjs8mInqxUGRw47CIBIy7Ew0Sh0nED4OXCwkNh8h7GrrgCkVK9a7w6Q2BjoVa6Oo9EZEDVJ7I1M4UeMDXzIEhvoukFxNMaP8o4gpon1l9qnqc7DcPIgpd7Ce0t/fJVO0q0qIsVeuY1XwNYK1gwm8J2GAqvHRF5mD7BcG0Rl6yegjw0BqdakE8Bni0RyjyDf4Y1Y0n0wNT4wAAAABJRU5ErkJggg=="
-            />
-            <span>@ryozm__</span>
           </a>
         </div>
       </div>
