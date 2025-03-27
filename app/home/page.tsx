@@ -54,7 +54,7 @@ const HomePage = () => {
           </motion.h3>
         </motion.div>
 
-        <div className="absolute top-0 bottom-0 left-0 right-0 w-full h-full">
+        <div className="absolute z-10 top-0 bottom-0 left-0 right-0 w-full h-full">
           <Suspense>
             <DynamicLogo />
           </Suspense>
